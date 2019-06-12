@@ -1,33 +1,34 @@
 variable "namespace" {
-  type        = "string"
+  type        = string
   description = "Namespace (e.g. `cp` or `cloudposse`)"
 }
 
 variable "stage" {
-  type        = "string"
+  type        = string
   description = "Stage (e.g. `prod`, `dev`, `staging`)"
 }
 
 variable "name" {
-  type        = "string"
+  type        = string
   description = "Name (e.g. `app`)"
 }
 
 variable "delimiter" {
-  type        = "string"
+  type        = string
   default     = "-"
   description = "Delimiter to be used between `namespace`, `stage`, `name`, and `attributes`"
 }
 
 variable "attributes" {
-  type        = "list"
+  type        = list(string)
   default     = []
   description = "Additional attributes (e.g. `policy` or `role`)"
 }
 
 variable "tags" {
-  type        = "map"
-  default     = {}
+  type = map(string)
+  default = {
+  }
   description = "Additional tags (e.g. map(`Cluster`,`XYZ`)"
 }
 
@@ -37,7 +38,7 @@ variable "subnet_type_tag_key" {
 }
 
 variable "region" {
-  type        = "string"
+  type        = string
   description = "AWS Region (e.g. `us-east-1`)"
 }
 
@@ -47,22 +48,22 @@ variable "max_subnet_count" {
 }
 
 variable "vpc_id" {
-  type        = "string"
+  type        = string
   description = "VPC ID where subnets will be created (e.g. `vpc-aceb2723`)"
 }
 
 variable "igw_id" {
-  type        = "string"
+  type        = string
   description = "Internet Gateway ID the public route table will point to (e.g. `igw-9c26a123`)"
 }
 
 variable "cidr_block" {
-  type        = "string"
+  type        = string
   description = "Base CIDR block which will be divided into subnet CIDR blocks (e.g. `10.0.0.0/16`)"
 }
 
 variable "availability_zones" {
-  type        = "list"
+  type        = list(string)
   description = "List of Availability Zones where subnets will be created"
 }
 
@@ -90,3 +91,4 @@ variable "map_public_ip_on_launch" {
   default     = "true"
   description = "Instances launched into a public subnet should be assigned a public IP address"
 }
+
